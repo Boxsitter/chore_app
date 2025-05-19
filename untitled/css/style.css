@@ -1,0 +1,267 @@
+/* General Body Styles */
+body {
+  font-family: 'Inter', sans-serif; /* Using Inter as a clean, modern font */
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7f6; /* Light gray background for a soft look */
+  color: #333; /* Dark gray for text for good readability */
+  line-height: 1.6;
+}
+
+/* Navigation Bar Styles */
+.navbar {
+  background-color: #ffffff; /* White background for the navbar */
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  display: flex;
+  justify-content: space-between; /* Space out logo and links */
+  align-items: center;
+}
+
+.navbar .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #2a9d8f; /* Teal color for the logo - can be changed */
+  text-decoration: none;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar ul li {
+  margin-left: 20px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #555; /* Slightly lighter gray for nav links */
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px; /* Rounded corners for links */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+  background-color: #2a9d8f; /* Teal background on hover/active */
+  color: #ffffff; /* White text on hover/active */
+}
+
+/* Container for page content */
+.container {
+  max-width: 1100px; /* Max width for content */
+  margin: 2rem auto; /* Center content on the page with some top/bottom margin */
+  padding: 2rem 2rem; /* Padding on the sides */
+}
+
+/* Section Styles */
+.section {
+  background-color: #ffffff; /* White background for content sections */
+  padding: 2rem;
+  margin-bottom: 2rem; /* Space between sections */
+  border-radius: 12px; /* Rounded corners for sections */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Softer shadow for sections */
+}
+
+.section h1, .section h2, .section h3 {
+  color: #264653; /* Dark blue/green for headings */
+  margin-top: 0;
+}
+
+/* Header specific styles */
+.header {
+  background-color: #2a9d8f; /* Teal background for header */
+  color: #ffffff; /* White text for header */
+  padding: 3rem 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.header p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto; /* Center the paragraph */
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  background-color: #e76f51; /* Coral color for primary buttons */
+  color: #ffffff;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border-radius: 8px; /* Rounded corners for buttons */
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #f4a261; /* Lighter orange on hover */
+}
+
+.btn-secondary {
+  background-color: #2a9d8f; /* Teal for secondary buttons */
+}
+
+.btn-secondary:hover {
+  background-color: #264653; /* Darker teal/blue on hover */
+}
+
+/* UI Examples Page Specifics */
+.ui-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* Space between gallery items */
+  justify-content: center;
+}
+
+.ui-card {
+  background-color: #f9f9f9; /* Very light gray for cards */
+  border: 1px solid #e0e0e0; /* Light border */
+  border-radius: 10px; /* Rounded corners for cards */
+  padding: 1.5rem;
+  width: calc(50% - 2rem); /* Two cards per row, considering gap */
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.ui-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px; /* Rounded corners for images */
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+}
+
+.ui-card h3 {
+  margin-top: 0;
+  color: #2a9d8f;
+}
+
+/* Poll Template Page Specifics */
+.poll-form {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.poll-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.poll-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.poll-form input[type="text"],
+.poll-form textarea,
+.poll-form select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box; /* Important for width calculation */
+  font-family: 'Inter', sans-serif;
+}
+
+.poll-form textarea {
+  resize: vertical; /* Allow vertical resize */
+  min-height: 100px;
+}
+
+.poll-form .poll-options .option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.poll-form .poll-options input[type="text"] {
+  flex-grow: 1;
+  margin-right: 0.5rem;
+}
+
+/* Footer Styles */
+.footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #333; /* Dark background for footer */
+  color: #f4f7f6; /* Light text for footer */
+  margin-top: 3rem;
+  border-radius: 12px 12px 0 0; /* Rounded top corners */
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar ul {
+    margin-top: 1rem;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navbar ul li {
+    margin-left: 0;
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+
+  .navbar ul li a {
+    display: block; /* Make links take full width */
+    text-align: center;
+  }
+
+  .ui-card {
+    width: 100%; /* Full width for cards on smaller screens */
+  }
+
+  .header h1 {
+    font-size: 2.2rem;
+  }
+
+  .header p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem; /* Less padding on very small screens */
+  }
+
+  .section {
+    padding: 1.5rem;
+  }
+
+  .header {
+    padding: 2rem 1rem;
+  }
+
+  .btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
