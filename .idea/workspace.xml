@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c8c170b-b15d-4583-ad22-4c88cf3abb2e" name="Changes" comment="" />
+    <list default="true" id="9cc8b231-9591-4728-8741-0b29c3effb42" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +13,7 @@
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 7
 }]]></component>
-  <component name="ProjectId" id="2xKPqJWrvNCXW4pFf236a3KdbLS" />
+  <component name="ProjectId" id="2xKQ92o7KTQ7WAZ2qYWErqMGHrz" />
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -24,6 +24,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JavaScript Debug.index.html.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "dart.analysis.tool.window.visible": "false",
     "node.js.detected.package.eslint": "true",
@@ -32,25 +34,26 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "settings.sync",
+    "show.migrate.to.gradle.popup": "false",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.157" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
       </set>
     </attachedChunks>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7c8c170b-b15d-4583-ad22-4c88cf3abb2e" name="Changes" comment="" />
-      <created>1747683981088</created>
+      <changelist id="9cc8b231-9591-4728-8741-0b29c3effb42" name="Changes" comment="" />
+      <created>1747684137016</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1747683981088</updated>
-      <workItem from="1747683982122" duration="356000" />
+      <updated>1747684137016</updated>
+      <workItem from="1747684139308" duration="690000" />
     </task>
     <servers />
   </component>
