@@ -1,0 +1,117 @@
+/* colors.css */
+
+/* Define color variables.
+  The :root selector targets the highest-level parent, usually <html>.
+  These will be the default (dark theme) values.
+*/
+:root,
+[data-theme="dark"] {
+  /* Solid Background Colors */
+  --body-bg-main-solid-color: #0f0c29; /* Dark blue/purple */
+  --navbar-bg-solid: #1a202c;         /* Dark slate */
+  --header-bg-solid: #24243e;         /* Slightly lighter dark purple/blue */
+  --section-bg-solid: #1d1242;        /* Dark purple */
+  --footer-bg-solid: #1a202c;          /* Dark slate */
+
+  /* Background Gradients (kept for elements that still use them, like logo/button) */
+  --logo-text-gradient: linear-gradient(90deg, #7dd3fc, #a78bfa);
+  --header-h1-text-gradient: linear-gradient(90deg, #93c5fd, #c4b5fd);
+  --btn-bg-gradient: linear-gradient(90deg, #3b82f6, #6d28d9);
+
+  /* Navbar Link Hover Background */
+  --navbar-link-hover-bg: rgba(99, 102, 241, 0.5); /* Indigo accent on hover/active */
+
+  /* Text Colors */
+  --text-primary: #e2e8f0;        /* Light slate gray for general text */
+  --text-secondary: #cbd5e1;      /* Lighter gray for nav links */
+  --text-tertiary: #becada;       /* Slightly brighter for header p */
+  --text-headings-section: #d0d7e1;/* Bright heading color for sections */
+  --text-content-section: #b0bac9; /* Readable text color for section content */
+  --text-strong-list: #c8d0da;    /* Slightly emphasize strong text within lists */
+  --text-footer: #94a3b8;         /* Slate gray for footer text */
+  --text-button: #ffffff;
+  --text-on-accent-hover: #ffffff; /* Text color on hovered/active nav links */
+
+  /* Border Colors */
+  --navbar-border: rgba(255, 255, 255, 0.08);
+  --container-border-color: rgba(255, 255, 255, 0.1); /* For header/section borders */
+  --footer-border-top: rgba(255, 255, 255, 0.08);
+
+  /* Accent Colors */
+  --accent-list-bullet: #7dd3fc; /* Light blue for list bullets */
+
+  /* Shadow Colors */
+  --shadow-navbar: rgba(0, 0, 0, 0.25);
+  --shadow-header: rgba(0, 0, 0, 0.2);
+  --shadow-section: rgba(0, 0, 0, 0.2);
+  --shadow-btn: rgba(59, 130, 246, 0.25);
+  --shadow-btn-hover: rgba(99, 102, 241, 0.35);
+
+  /* Special Transparent Color for Text Gradient Effect */
+  --text-transparent-for-gradient: transparent;
+
+  --glass-bg-navbar: rgba(23, 35, 54, 0.27);
+  --glass-bg-header: rgba(23, 35, 54, 0.12);
+  --glass-bg-section: rgba(23, 35, 54, 0.48);
+  --glass-bg-footer: rgba(23, 35, 54, 0.07); /* Adjusted for a bit more subtlety if desired */
+
+  /* Blur Intensity Variables */
+  --blur-navbar: 10px;
+  --blur-header: 10px;
+  --blur-section: 10px;
+  --blur-footer: 10px; /* Slightly adjusted */
+
+  /* Gradient Border Angle & Colors */
+  --gradient-border-angle: 135deg; /* Angle from top-left towards bottom-right */
+
+  /* Lighter color for the start of the gradient (top-left) */
+  --gradient-border-start-color: rgba(255, 255, 255, 0.29); /* Made slightly more opaque for better visibility */
+  --gradient-border-mid-color: rgba(255, 255, 255, 0.05);
+  --gradient-border-end-color: rgba(255, 255, 255, 0.16); /* Adjusted for balance */
+}
+
+[data-theme="light"] {
+  /* Solid Background Colors */
+  --body-bg-main-solid-color: #f4f7f9; /* Very light gray */
+  --navbar-bg-solid: #ffffff;         /* White */
+  --header-bg-solid: #f9f9f9;         /* Off-white */
+  --section-bg-solid: #ffffff;        /* White */
+  --footer-bg-solid: #eef2f5;          /* Light gray */
+
+  /* Background Gradients */
+  --logo-text-gradient: linear-gradient(90deg, #3b82f6, #6d28d9); /* Darker blue to purple for contrast */
+  --header-h1-text-gradient: linear-gradient(90deg, #2563eb, #5b21b6); /* Darker for contrast */
+  --btn-bg-gradient: linear-gradient(90deg, #1d4ed8, #5b21b6); /* Darker button gradient */
+
+  /* Navbar Link Hover Background */
+  --navbar-link-hover-bg: rgba(99, 102, 241, 0.15); /* Lighter indigo accent */
+
+  /* Text Colors */
+  --text-primary: #1f2937;        /* Dark gray for general text */
+  --text-secondary: #374151;      /* Slightly lighter dark gray for nav links */
+  --text-tertiary: #4b5563;       /* For header p */
+  --text-headings-section: #111827;/* Very dark for section headings */
+  --text-content-section: #374151; /* Dark gray for section content */
+  --text-strong-list: #111827;    /* Emphasize strong text */
+  --text-footer: #4b5563;         /* Medium gray for footer text */
+  --text-button: #ffffff;
+  --text-on-accent-hover: #1e3a8a; /* Dark blue text on hovered/active nav links */
+
+  /* Border Colors */
+  --navbar-border: rgba(0, 0, 0, 0.1);
+  --container-border-color: rgba(0, 0, 0, 0.1); /* For header/section borders */
+  --footer-border-top: rgba(0, 0, 0, 0.1);
+
+  /* Accent Colors */
+  --accent-list-bullet: #3b82f6; /* Blue for list bullets */
+
+  /* Shadow Colors */
+  --shadow-navbar: rgba(0, 0, 0, 0.1);
+  --shadow-header: rgba(0, 0, 0, 0.08);
+  --shadow-section: rgba(0, 0, 0, 0.08);
+  --shadow-btn: rgba(59, 130, 246, 0.2);
+  --shadow-btn-hover: rgba(99, 102, 241, 0.3);
+
+  /* Special Transparent Color for Text Gradient Effect - remains the same */
+  --text-transparent-for-gradient: transparent;
+}

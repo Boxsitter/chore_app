@@ -1,22 +1,49 @@
+/* style.css (Trimmed) */
+
 /* General Body Styles */
 body {
   font-family: 'Inter', sans-serif;
-  /* Animated Gradient Background */
-  background: linear-gradient(-45deg, #0f0c29, #1d1242, #24243e, #1a202c);
-  background-size: 400% 400%;
-  animation: gradientAnimation 25s ease infinite;
-  background-attachment: fixed; /* Keeps gradient fixed during scroll */
-  color: #e2e8f0; /* Light slate gray for text, good contrast on dark bg */
+
+  background-image: url('../assets/dark-grainy.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--text-primary);
   margin: 0;
   padding: 0;
   line-height: 1.6;
   overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-@keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.blended-png {
+  width: 350px;
+  max-width: 90%; /* Ensure it's responsive */
+  height: auto;   /* Maintain aspect ratio */
+  margin-top: 2rem;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+
+  /* --- BLENDING AND OPACITY --- */
+  mix-blend-mode: overlay;
+  opacity: 1;
+
+  /* Positioning:
+    If you want the image fixed at a certain spot regardless of scroll:
+    position: fixed;
+    top: 50px;
+    left: 50px;
+
+    If you want it to scroll with the page but be absolutely positioned
+    relative to the body (or a positioned parent):
+    position: absolute; (Ensure body or a wrapper has position:relative if needed)
+    top: 10vh;
+    left: 10vw;
+
+    For this demo, it's centered by the body's flex properties,
+    so no specific position property is needed unless you want to override that.
+  */
 }
 
 /* Navigation Bar Styles */
@@ -24,30 +51,44 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem; /* Padding inside the navbar */
-  margin: 1rem 1rem 0 1rem; /* Margin around the navbar */
-  /* Glass effect for navbar */
-  background: rgba(15, 23, 42, 0.55); /* Darker, slightly more opaque for navbar */
-  backdrop-filter: blur(10px) saturate(130%);
-  -webkit-backdrop-filter: blur(10px) saturate(130%); /* Safari support */
-  border-radius: 0.75rem; /* 12px */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  position: sticky; /* Make navbar sticky */
-  top: 1rem; /* Stick 1rem from the top */
-  z-index: 1000; /* Ensure navbar stays on top */
-  border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border for definition */
+  padding: 1rem 2rem;
+  margin: 1rem 1rem 0 1rem;
+  background-color: var(--glass-bg-navbar);
+  backdrop-filter: blur(var(--blur-navbar));
+  -webkit-backdrop-filter: blur(var(--blur-navbar));
+
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 20px var(--shadow-navbar);
+  position: sticky;
+  top: 1rem;
+  z-index: 1000;
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem;
+  padding: 2px;
+  background: linear-gradient(var(--gradient-border-angle), var(--gradient-border-start-color), var(--gradient-border-mid-color), var(--gradient-border-end-color));
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='white'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='white'/%3E%3C/svg%3E");
+  -webkit-mask-clip: padding, content;
+  -webkit-mask-composite: xor;
+  mask-image: linear-gradient(white, white), linear-gradient(white, white);
+  mask-clip: padding-box, content-box; /* Corrected order for exclude */
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .navbar .logo {
   font-size: 1.8rem;
   font-weight: bold;
   text-decoration: none;
-  /* Text gradient for logo */
-  background: linear-gradient(90deg, #7dd3fc, #a78bfa); /* Light blue to lavender */
+  background: var(--logo-text-gradient);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-transparent-for-gradient);
+  -webkit-text-fill-color: var(--text-transparent-for-gradient);
 }
 
 .navbar ul {
@@ -58,252 +99,219 @@ body {
 }
 
 .navbar ul li {
-  margin-left: 25px; /* Spacing between nav items */
+  margin-left: 25px;
 }
 
 .navbar ul li a {
   text-decoration: none;
-  color: #cbd5e1; /* Lighter gray for nav links */
+  color: var(--text-secondary);
   font-weight: 500;
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem; /* 8px */
+  border-radius: 0.5rem;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar ul li a:hover,
 .navbar ul li a.active {
-  background-color: rgba(99, 102, 241, 0.5); /* Indigo accent on hover/active */
-  color: #ffffff; /* White text on hover/active */
+  background-color: var(--navbar-link-hover-bg);
+  color: var(--text-on-accent-hover);
 }
 
 /* Page Header Styles (Welcome section) */
-.header { /* This is the "Welcome to ChoreManager!" section */
-  padding: 4rem 2rem;
+.header {
+  padding: 0 1rem;
   text-align: center;
-  margin: 2rem 1rem; /* Margin around the header, matching navbar */
-  /* Glass Effect Properties */
-  background: rgba(255, 255, 255, 0.09); /* Slightly lighter glass for header */
-  backdrop-filter: blur(12px) saturate(150%);
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
-  border-radius: 1rem; /* 16px */
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-  border: 1px solid transparent; /* Fallback border for non-supporting browsers */
-  position: relative; /* Required for the ::before pseudo-element */
-}
-
-/* Gradient Border for .header */
-.header::before {
-  content: "";
-  position: absolute;
-  inset: 0; /* Covers the entire parent */
-  border-radius: 1rem; /* Match parent's border-radius */
-  padding: 1.5px; /* Thickness of the gradient border - this is the area we want to show */
-  background: linear-gradient(145deg, rgba(255,255,255,0.28), rgba(255,255,255,0.06), rgba(255,255,255,0.28)); /* The border gradient */
-
-  /* Mask to create the border effect - WebKit specific longhands using SVG data URI and border-box */
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='white'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='white'/%3E%3C/svg%3E");
-  -webkit-mask-clip: content-box, border-box; /* Changed padding-box to border-box for WebKit */
-  -webkit-mask-composite: xor;
-
-  /* Standard mask properties */
-  mask-image: linear-gradient(#fff 0 0), linear-gradient(#fff 0 0);
-  mask-clip: content-box, padding-box; /* Standard still uses padding-box */
-  mask-composite: exclude; /* 'exclude' is equivalent to WebKit's 'xor' */
-
-  pointer-events: none; /* Ensure pseudo-element doesn't interfere with interactions */
+  margin-top: 0;
+  margin-bottom: 2rem;
+  /*
+    Blur effect and gradient border removed.
+    Define '--header-bg-solid' in colors.css for a solid background.
+    Define '--container-border-color' in colors.css for the border.
+  */
 }
 
 .header h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  /* Text gradient for header H1 */
-  background: linear-gradient(90deg, #93c5fd, #c4b5fd); /* Brighter text gradient */
+  font-size: 6rem;
+  font-weight: bolder;
+  margin-bottom: 1rem;
+  line-height: 7rem;
+  background: var(--header-h1-text-gradient);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-transparent-for-gradient);
+  -webkit-text-fill-color: var(--text-transparent-for-gradient);
+  margin-block-start: 0;
 }
 
 .header p {
   font-size: 1.2rem;
-  color: #becada; /* Slightly brighter text for readability */
+  color: var(--text-tertiary);
   max-width: 700px;
-  margin: 0 auto; /* Center the paragraph */
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 7rem;
+
 }
 
 /* Container for main page content */
 .container {
-  max-width: 960px; /* Max width for content area */
-  margin: 0 auto; /* Center content on the page */
-  padding: 0 1rem; /* Padding on the sides, matches navbar/header horizontal margin */
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 /* Section Styles */
 .section {
   padding: 2rem;
-  margin-bottom: 2rem; /* Space between sections */
-  /* Glass Effect Properties */
-  background: rgba(255, 255, 255, 0.07); /* Standard glass for sections */
-  backdrop-filter: blur(12px) saturate(150%);
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
-  border-radius: 1rem; /* 16px */
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-  border: 1px solid transparent; /* Fallback border */
-  position: relative; /* Required for the ::before pseudo-element */
+  margin-bottom: 2rem;
+
+  background-color: var(--glass-bg-section);
+  backdrop-filter: blur(var(--blur-section));
+  -webkit-backdrop-filter: blur(var(--blur-section));
+
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px 0 var(--shadow-section);
+  position: relative;
 }
 
-/* Gradient Border for .section */
 .section::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: 1rem;
-  padding: 1.5px; /* Thickness of the gradient border */
-  background: linear-gradient(145deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05), rgba(255,255,255,0.25)); /* The border gradient */
-
-  /* Mask to create the border effect - WebKit specific longhands using SVG data URI and border-box */
+  padding: 2px;
+  background: linear-gradient(var(--gradient-border-angle), var(--gradient-border-start-color), var(--gradient-border-mid-color), var(--gradient-border-end-color));
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='white'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='white'/%3E%3C/svg%3E");
-  -webkit-mask-clip: content-box, border-box; /* Changed padding-box to border-box for WebKit */
+  -webkit-mask-clip: padding, content;
   -webkit-mask-composite: xor;
-
-  /* Standard mask properties */
-  mask-image: linear-gradient(#fff 0 0), linear-gradient(#fff 0 0);
-  mask-clip: content-box, padding-box; /* Standard still uses padding-box */
+  mask-image: linear-gradient(white, white), linear-gradient(white, white);
+  mask-clip: padding-box, content-box; /* Corrected order for exclude */
   mask-composite: exclude;
-
   pointer-events: none;
 }
 
 .section h2 {
   font-size: 1.75rem;
   font-weight: 600;
-  color: #d0d7e1; /* Bright heading color for sections */
+  color: var(--text-headings-section);
   margin-top: 0;
   margin-bottom: 1rem;
 }
 
 .section p, .section li {
-  color: #b0bac9; /* Readable text color for section content */
+  color: var(--text-content-section);
   margin-bottom: 0.75rem;
 }
 
 .section ul {
-  list-style: none; /* Removing default disc for a cleaner look */
-  padding-left: 0; /* Remove default padding */
+  list-style: none;
+  padding-left: 0;
 }
 .section ul li {
-  padding-left: 1.5em; /* Create space for custom bullet */
-  position: relative; /* For positioning the custom bullet */
-  margin-bottom: 0.5rem; /* Spacing between list items */
+  padding-left: 1.5em;
+  position: relative;
+  margin-bottom: 0.5rem;
 }
 
-.section ul li::before { /* Custom bullet point style */
-  content: "✦"; /* Using a star/diamond like character. Alternatives: "❖", "◈", "➢" */
+.section ul li::before {
+  content: "✦";
   position: absolute;
   left: 0;
-  top: 0.1em; /* Adjust vertical alignment if needed */
-  color: #7dd3fc; /* Accent color for bullets (light blue) */
-  font-size: 0.9em; /* Adjust size of the bullet */
+  top: 0.1em;
+  color: var(--accent-list-bullet);
+  font-size: 0.9em;
   line-height: inherit;
 }
 
-
 .section ul li strong {
-  color: #c8d0da; /* Slightly emphasize strong text within lists */
+  color: var(--text-strong-list);
   font-weight: 600;
 }
 
 /* Button Styles */
 .btn {
   display: inline-block;
-  background: linear-gradient(90deg, #3b82f6, #6d28d9); /* Blue to purple gradient */
-  color: #ffffff;
+  background: var(--btn-bg-gradient);
+  color: var(--text-button);
   padding: 0.8rem 1.8rem;
   text-decoration: none;
-  border-radius: 0.5rem; /* 8px */
+  border-radius: 0.5rem;
   font-weight: bold;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px 0 rgba(59, 130, 246, 0.25);
-  border: none; /* Remove default border */
+  box-shadow: 0 4px 15px 0 var(--shadow-btn);
+  border: none;
   cursor: pointer;
 }
 
 .btn:hover {
-  transform: translateY(-2px); /* Slight lift on hover */
-  box-shadow: 0 6px 20px 0 rgba(99, 102, 241, 0.35); /* More pronounced shadow on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 var(--shadow-btn-hover);
 }
 
 /* Footer Styles */
 .footer {
   text-align: center;
-  padding: 2rem 1rem;
-  background: rgba(15, 23, 42, 0.4); /* Dark, slightly transparent footer */
-  color: #94a3b8; /* Slate gray for footer text */
-  margin: 3rem 1rem 1rem 1rem; /* Top margin, and horizontal/bottom margin */
-  border-radius: 0.75rem; /* Rounded corners for footer, matching navbar */
-  /* Subtle Glass effect for footer */
-  backdrop-filter: blur(5px) saturate(100%);
-  -webkit-backdrop-filter: blur(5px) saturate(100%);
-  border-top: 1px solid rgba(255, 255, 255, 0.08); /* Subtle top border */
+  /* margin-top: 8rem; /* From your trimmed file */
+  /* padding: 1rem 1rem; /* From your trimmed file */
+  padding: 1.2rem 1rem; /* Increased padding for better spacing */
+
+
+  background-color: #1a202c;
+  backdrop-filter: blur(var(--blur-footer));
+  -webkit-backdrop-filter: blur(var(--blur-footer));
+
+  color: var(--text-footer);
+  position: relative;
 }
 
 .footer p {
   margin: 0;
 }
 
-/* Utility Classes from your HTML (e.g., text-align-center) */
+/* Utility Classes */
 .text-align-center {
   text-align: center;
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments (kept as they are from your trimmed file, with minor header tweaks) */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
-    align-items: center; /* Center items in column layout */
-    margin: 0.5rem; /* Adjust margin for smaller screens */
-    top: 0.5rem; /* Adjust sticky position */
+    align-items: center;
+    margin: 0.5rem;
+    top: 0.5rem;
   }
-
   .navbar ul {
     margin-top: 1rem;
     flex-direction: column;
     width: 100%;
     text-align: center;
   }
-
   .navbar ul li {
-    margin-left: 0; /* Remove left margin for stacked items */
+    margin-left: 0;
     margin-bottom: 0.5rem;
   }
-
   .navbar ul li a {
-    display: block; /* Make links take full width for easier tapping */
+    display: block;
   }
-
   .header {
-    padding: 3rem 1rem;
-    margin: 1rem 0.5rem; /* Adjust margin */
+    padding: 2rem 1rem;
+    margin: 1rem 0.5rem;
   }
-
   .header h1 {
-    font-size: 2.2rem;
+    font-size: 3.5rem; /* Adjusted from your file's 2.2rem for better impact */
+    line-height: 4rem; /* Adjusted line-height */
   }
-
   .header p {
     font-size: 1rem;
   }
-
   .container {
-    padding: 0 0.5rem; /* Reduce side padding for container */
+    padding: 0 0.5rem;
   }
-
   .section {
     padding: 1.5rem;
     margin-bottom: 1.5rem;
   }
-
   .section h2 {
     font-size: 1.5rem;
   }
@@ -311,25 +319,26 @@ body {
 
 @media (max-width: 480px) {
   .navbar {
-    padding: 1rem; /* Adjust padding */
+    padding: 1rem;
   }
   .header {
-    padding: 2rem 1rem; /* Further adjust padding */
+    padding: 1.5rem 1rem;
   }
   .header h1 {
-    font-size: 1.8rem; /* Smaller heading for very small screens */
+    font-size: 2.5rem; /* Adjusted from your file's 1.8rem */
+    line-height: 3rem; /* Adjusted line-height */
   }
   .header p {
-    font-size: 0.9rem; /* Smaller paragraph text */
+    font-size: 0.9rem;
   }
   .btn {
     padding: 0.7rem 1.2rem;
-    font-size: 0.9rem; /* Smaller button */
+    font-size: 0.9rem;
   }
   .section {
-    padding: 1rem; /* Reduce padding for sections */
+    padding: 1rem;
   }
   .section ul li::before {
-    top: 0.05em; /* Fine-tune bullet alignment for smaller fonts */
+    top: 0.05em;
   }
 }
