@@ -1,28 +1,53 @@
 /* General Body Styles */
 body {
-  font-family: 'Inter', sans-serif; /* Using Inter as a clean, modern font */
+  font-family: 'Inter', sans-serif;
+  /* Animated Gradient Background */
+  background: linear-gradient(-45deg, #0f0c29, #1d1242, #24243e, #1a202c);
+  background-size: 400% 400%;
+  animation: gradientAnimation 25s ease infinite;
+  background-attachment: fixed; /* Keeps gradient fixed during scroll */
+  color: #e2e8f0; /* Light slate gray for text, good contrast on dark bg */
   margin: 0;
   padding: 0;
-  background-color: #f4f7f6; /* Light gray background for a soft look */
-  color: #333; /* Dark gray for text for good readability */
   line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Navigation Bar Styles */
 .navbar {
-  background-color: #ffffff; /* White background for the navbar */
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   display: flex;
-  justify-content: space-between; /* Space out logo and links */
+  justify-content: space-between;
   align-items: center;
+  padding: 1rem 2rem; /* Padding inside the navbar */
+  margin: 1rem 1rem 0 1rem; /* Margin around the navbar */
+  /* Glass effect for navbar */
+  background: rgba(15, 23, 42, 0.55); /* Darker, slightly more opaque for navbar */
+  backdrop-filter: blur(10px) saturate(130%);
+  -webkit-backdrop-filter: blur(10px) saturate(130%); /* Safari support */
+  border-radius: 0.75rem; /* 12px */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  position: sticky; /* Make navbar sticky */
+  top: 1rem; /* Stick 1rem from the top */
+  z-index: 1000; /* Ensure navbar stays on top */
+  border: 1px solid rgba(255, 255, 255, 0.08); /* Subtle border for definition */
 }
 
 .navbar .logo {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #2a9d8f; /* Teal color for the logo - can be changed */
   text-decoration: none;
+  /* Text gradient for logo */
+  background: linear-gradient(90deg, #7dd3fc, #a78bfa); /* Light blue to lavender */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 .navbar ul {
@@ -33,209 +58,233 @@ body {
 }
 
 .navbar ul li {
-  margin-left: 20px;
+  margin-left: 25px; /* Spacing between nav items */
 }
 
 .navbar ul li a {
   text-decoration: none;
-  color: #555; /* Slightly lighter gray for nav links */
+  color: #cbd5e1; /* Lighter gray for nav links */
   font-weight: 500;
   padding: 0.5rem 1rem;
-  border-radius: 8px; /* Rounded corners for links */
+  border-radius: 0.5rem; /* 8px */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar ul li a:hover,
 .navbar ul li a.active {
-  background-color: #2a9d8f; /* Teal background on hover/active */
+  background-color: rgba(99, 102, 241, 0.5); /* Indigo accent on hover/active */
   color: #ffffff; /* White text on hover/active */
 }
 
-/* Container for page content */
-.container {
-  max-width: 1100px; /* Max width for content */
-  margin: 2rem auto; /* Center content on the page with some top/bottom margin */
-  padding: 2rem 2rem; /* Padding on the sides */
-}
-
-/* Section Styles */
-.section {
-  background-color: #ffffff; /* White background for content sections */
-  padding: 2rem;
-  margin-bottom: 2rem; /* Space between sections */
-  border-radius: 12px; /* Rounded corners for sections */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Softer shadow for sections */
-}
-
-.section h1, .section h2, .section h3 {
-  color: #264653; /* Dark blue/green for headings */
-  margin-top: 0;
-}
-
-/* Header specific styles */
-.header {
-  background-color: #2a9d8f; /* Teal background for header */
-  color: #ffffff; /* White text for header */
-  padding: 3rem 2rem;
+/* Page Header Styles (Welcome section) */
+.header { /* This is the "Welcome to ChoreManager!" section */
+  padding: 4rem 2rem;
   text-align: center;
-  margin-bottom: 2rem;
+  margin: 2rem 1rem; /* Margin around the header, matching navbar */
+  /* Glass Effect Properties */
+  background: rgba(255, 255, 255, 0.09); /* Slightly lighter glass for header */
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border-radius: 1rem; /* 16px */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid transparent; /* Fallback border for non-supporting browsers */
+  position: relative; /* Required for the ::before pseudo-element */
+}
+
+/* Gradient Border for .header */
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* Covers the entire parent */
+  border-radius: 1rem; /* Match parent's border-radius */
+  padding: 1.5px; /* Thickness of the gradient border - this is the area we want to show */
+  background: linear-gradient(145deg, rgba(255,255,255,0.28), rgba(255,255,255,0.06), rgba(255,255,255,0.28)); /* The border gradient */
+
+  /* Mask to create the border effect - WebKit specific longhands using SVG data URI and border-box */
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='white'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='white'/%3E%3C/svg%3E");
+  -webkit-mask-clip: content-box, border-box; /* Changed padding-box to border-box for WebKit */
+  -webkit-mask-composite: xor;
+
+  /* Standard mask properties */
+  mask-image: linear-gradient(#fff 0 0), linear-gradient(#fff 0 0);
+  mask-clip: content-box, padding-box; /* Standard still uses padding-box */
+  mask-composite: exclude; /* 'exclude' is equivalent to WebKit's 'xor' */
+
+  pointer-events: none; /* Ensure pseudo-element doesn't interfere with interactions */
 }
 
 .header h1 {
   font-size: 2.8rem;
-  margin-bottom: 0.5rem;
-  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  /* Text gradient for header H1 */
+  background: linear-gradient(90deg, #93c5fd, #c4b5fd); /* Brighter text gradient */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 .header p {
   font-size: 1.2rem;
+  color: #becada; /* Slightly brighter text for readability */
   max-width: 700px;
   margin: 0 auto; /* Center the paragraph */
+}
+
+/* Container for main page content */
+.container {
+  max-width: 960px; /* Max width for content area */
+  margin: 0 auto; /* Center content on the page */
+  padding: 0 1rem; /* Padding on the sides, matches navbar/header horizontal margin */
+}
+
+/* Section Styles */
+.section {
+  padding: 2rem;
+  margin-bottom: 2rem; /* Space between sections */
+  /* Glass Effect Properties */
+  background: rgba(255, 255, 255, 0.07); /* Standard glass for sections */
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border-radius: 1rem; /* 16px */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid transparent; /* Fallback border */
+  position: relative; /* Required for the ::before pseudo-element */
+}
+
+/* Gradient Border for .section */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  padding: 1.5px; /* Thickness of the gradient border */
+  background: linear-gradient(145deg, rgba(255,255,255,0.25), rgba(255,255,255,0.05), rgba(255,255,255,0.25)); /* The border gradient */
+
+  /* Mask to create the border effect - WebKit specific longhands using SVG data URI and border-box */
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='white'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Crect width='1' height='1' fill='white'/%3E%3C/svg%3E");
+  -webkit-mask-clip: content-box, border-box; /* Changed padding-box to border-box for WebKit */
+  -webkit-mask-composite: xor;
+
+  /* Standard mask properties */
+  mask-image: linear-gradient(#fff 0 0), linear-gradient(#fff 0 0);
+  mask-clip: content-box, padding-box; /* Standard still uses padding-box */
+  mask-composite: exclude;
+
+  pointer-events: none;
+}
+
+.section h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #d0d7e1; /* Bright heading color for sections */
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.section p, .section li {
+  color: #b0bac9; /* Readable text color for section content */
+  margin-bottom: 0.75rem;
+}
+
+.section ul {
+  list-style: none; /* Removing default disc for a cleaner look */
+  padding-left: 0; /* Remove default padding */
+}
+.section ul li {
+  padding-left: 1.5em; /* Create space for custom bullet */
+  position: relative; /* For positioning the custom bullet */
+  margin-bottom: 0.5rem; /* Spacing between list items */
+}
+
+.section ul li::before { /* Custom bullet point style */
+  content: "✦"; /* Using a star/diamond like character. Alternatives: "❖", "◈", "➢" */
+  position: absolute;
+  left: 0;
+  top: 0.1em; /* Adjust vertical alignment if needed */
+  color: #7dd3fc; /* Accent color for bullets (light blue) */
+  font-size: 0.9em; /* Adjust size of the bullet */
+  line-height: inherit;
+}
+
+
+.section ul li strong {
+  color: #c8d0da; /* Slightly emphasize strong text within lists */
+  font-weight: 600;
 }
 
 /* Button Styles */
 .btn {
   display: inline-block;
-  background-color: #e76f51; /* Coral color for primary buttons */
+  background: linear-gradient(90deg, #3b82f6, #6d28d9); /* Blue to purple gradient */
   color: #ffffff;
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 1.8rem;
   text-decoration: none;
-  border-radius: 8px; /* Rounded corners for buttons */
+  border-radius: 0.5rem; /* 8px */
   font-weight: bold;
-  transition: background-color 0.3s ease;
-  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px 0 rgba(59, 130, 246, 0.25);
+  border: none; /* Remove default border */
   cursor: pointer;
 }
 
 .btn:hover {
-  background-color: #f4a261; /* Lighter orange on hover */
-}
-
-.btn-secondary {
-  background-color: #2a9d8f; /* Teal for secondary buttons */
-}
-
-.btn-secondary:hover {
-  background-color: #264653; /* Darker teal/blue on hover */
-}
-
-/* UI Examples Page Specifics */
-.ui-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem; /* Space between gallery items */
-  justify-content: center;
-}
-
-.ui-card {
-  background-color: #f9f9f9; /* Very light gray for cards */
-  border: 1px solid #e0e0e0; /* Light border */
-  border-radius: 10px; /* Rounded corners for cards */
-  padding: 1.5rem;
-  width: calc(50% - 2rem); /* Two cards per row, considering gap */
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-  text-align: center;
-}
-
-.ui-card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px; /* Rounded corners for images */
-  margin-bottom: 1rem;
-  border: 1px solid #ddd;
-}
-
-.ui-card h3 {
-  margin-top: 0;
-  color: #2a9d8f;
-}
-
-/* Poll Template Page Specifics */
-.poll-form {
-  background-color: #ffffff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.poll-form .form-group {
-  margin-bottom: 1.5rem;
-}
-
-.poll-form label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.poll-form input[type="text"],
-.poll-form textarea,
-.poll-form select {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-sizing: border-box; /* Important for width calculation */
-  font-family: 'Inter', sans-serif;
-}
-
-.poll-form textarea {
-  resize: vertical; /* Allow vertical resize */
-  min-height: 100px;
-}
-
-.poll-form .poll-options .option {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-
-.poll-form .poll-options input[type="text"] {
-  flex-grow: 1;
-  margin-right: 0.5rem;
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 6px 20px 0 rgba(99, 102, 241, 0.35); /* More pronounced shadow on hover */
 }
 
 /* Footer Styles */
 .footer {
   text-align: center;
-  padding: 2rem;
-  background-color: #333; /* Dark background for footer */
-  color: #f4f7f6; /* Light text for footer */
-  margin-top: 3rem;
-  border-radius: 12px 12px 0 0; /* Rounded top corners */
+  padding: 2rem 1rem;
+  background: rgba(15, 23, 42, 0.4); /* Dark, slightly transparent footer */
+  color: #94a3b8; /* Slate gray for footer text */
+  margin: 3rem 1rem 1rem 1rem; /* Top margin, and horizontal/bottom margin */
+  border-radius: 0.75rem; /* Rounded corners for footer, matching navbar */
+  /* Subtle Glass effect for footer */
+  backdrop-filter: blur(5px) saturate(100%);
+  -webkit-backdrop-filter: blur(5px) saturate(100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08); /* Subtle top border */
 }
 
 .footer p {
   margin: 0;
 }
 
+/* Utility Classes from your HTML (e.g., text-align-center) */
+.text-align-center {
+  text-align: center;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; /* Center items in column layout */
+    margin: 0.5rem; /* Adjust margin for smaller screens */
+    top: 0.5rem; /* Adjust sticky position */
   }
 
   .navbar ul {
     margin-top: 1rem;
     flex-direction: column;
     width: 100%;
-  }
-
-  .navbar ul li {
-    margin-left: 0;
-    margin-bottom: 0.5rem;
-    width: 100%;
-  }
-
-  .navbar ul li a {
-    display: block; /* Make links take full width */
     text-align: center;
   }
 
-  .ui-card {
-    width: 100%; /* Full width for cards on smaller screens */
+  .navbar ul li {
+    margin-left: 0; /* Remove left margin for stacked items */
+    margin-bottom: 0.5rem;
+  }
+
+  .navbar ul li a {
+    display: block; /* Make links take full width for easier tapping */
+  }
+
+  .header {
+    padding: 3rem 1rem;
+    margin: 1rem 0.5rem; /* Adjust margin */
   }
 
   .header h1 {
@@ -245,23 +294,42 @@ body {
   .header p {
     font-size: 1rem;
   }
-}
 
-@media (max-width: 480px) {
   .container {
-    padding: 0 1rem; /* Less padding on very small screens */
+    padding: 0 0.5rem; /* Reduce side padding for container */
   }
 
   .section {
     padding: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
+  .section h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 1rem; /* Adjust padding */
+  }
   .header {
-    padding: 2rem 1rem;
+    padding: 2rem 1rem; /* Further adjust padding */
   }
-
+  .header h1 {
+    font-size: 1.8rem; /* Smaller heading for very small screens */
+  }
+  .header p {
+    font-size: 0.9rem; /* Smaller paragraph text */
+  }
   .btn {
     padding: 0.7rem 1.2rem;
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* Smaller button */
+  }
+  .section {
+    padding: 1rem; /* Reduce padding for sections */
+  }
+  .section ul li::before {
+    top: 0.05em; /* Fine-tune bullet alignment for smaller fonts */
   }
 }
